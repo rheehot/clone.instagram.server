@@ -41,5 +41,6 @@ npm install graphql-tools merge-graphql-schemas --save
 
 ```js
 npm install prisma
+npm install --save prisma-client-lib
 prisma init
 ```

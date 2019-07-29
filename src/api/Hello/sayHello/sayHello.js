@@ -1,5 +1,12 @@
+import {
+  prisma,
+} from '../../../../generated/prisma-client';
+
 export default {
   Query: {
-    sayHello: () => 'Hello',
+    sayHello: async () => {
+      console.log(await prisma.users());
+      return 'HELLO';
+    },
   },
 };
