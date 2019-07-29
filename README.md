@@ -36,3 +36,10 @@ npx install-peerdeps --dev eslint-config-airbnb
 ```js
 npm install graphql-tools merge-graphql-schemas --save
 ```
+
+## Introduction to Prisma
+
+```js
+npm install prisma
+prisma init
+```

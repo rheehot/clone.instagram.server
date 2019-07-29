@@ -1,0 +1,6 @@
+endpoint: https://eu1.prisma.sh/kibeom-kwon-1fb7b9/instagram-clone-coding/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: javascript-client
+    output: ./generated/prisma-client/
