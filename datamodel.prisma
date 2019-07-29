@@ -20,6 +20,7 @@ type Post {
   caption: String!
   likes: [Like!]!
   comments: [Comment!]!
+  user: User!
   }
 
 type Like {
