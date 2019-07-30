@@ -44,3 +44,53 @@ npm install prisma
 npm install --save prisma-client-lib
 prisma init
 ```
+
+## prisma
+
+- `prisma deploy` : schema of datamodel.prisma migrate
+- `prisma generate` : create prisma client
+
+## dotenv
+
+import `.env`
+
+## models.graphql
+
+Using GraphQL Server
+`datamodel.prisma` -> `models.graphql`
+db model schema
+
+## api
+
+create folder
+`.graphql` (query type) + `.js` (query resolvers)
+
+## merge schema and resolvers
+
+```js
+
+#! src/schema.js
+
+const allTypes = fileLoader(path.join(__dirname, '/api/**/*.graphql'));
+const allResolvers = fileLoader(path.join(__dirname, '/api/**/*.js'));
+
+const schema = makeExecutableSchema({
+  typeDefs: mergeTypes(allTypes),
+  resolvers: mergeResolvers(allResolvers),
+});
+
+#! src/server.js
+const server = new GraphQLServer({
+  schema,
+});
+```
+
+## utils.js
+
+utility functions
+
+## nodemailer
+
+```js
+npm install --save nodemailer
+```
