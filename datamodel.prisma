@@ -46,6 +46,7 @@ type File {
 type Room {
   id: ID! @id
   participants: [User!]!
+  messages: [Message!]!
 }
 
 type Message {

@@ -93,4 +93,15 @@ utility functions
 
 ```js
 npm install --save nodemailer
+npm install --save nodemailer-sendgrid-transport
 ```
+
+## passport.js
+
+```js
+npm install passport passport-jwt
+```
+
+passport는 인증관련 일처리.
+jwt 토큰이나 쿠키에서 정보를 가져와 사용자 정보에 serialize(저장)함.
+토큰을 해독 후 사용자 객체를 request에 추가.
