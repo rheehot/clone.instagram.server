@@ -10,20 +10,27 @@ import {
 
 export default {
   Query: {
-    seeRooms: (_, __, {
+    seeRoom: async (_, args, {
       request,
     }) => {
       isAuthenticated(request);
       const {
+        id,
+      } = args;
+      const {
         user,
       } = request;
-      return prisma.rooms({
-        where: {
-          participants_some: {
-            id: user.id,
-          },
+      const canSee = await prisma.$exists.room({
+        participants_some: {
+          id: user.id,
         },
-      }).$fragment(ROOM_FRAGMENT);
+      });
+      if (canSee) {
+        return prisma.room({
+          id,
+        }).$fragment(ROOM_FRAGMENT);
+      }
+      throw Error('You can\'t see this');
     },
   },
 };

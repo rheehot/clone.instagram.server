@@ -1,59 +1,58 @@
-/* eslint-disable import/prefer-default-export */
 export const USER_FRAGMENT = `
-  fragment UserParts on User {
     id
-    username    
-  }
+    username
+    avatar
 `;
 
 export const COMMENT_FRAGMENT = `
-fragment CommentParts on Comment {
-  id
-  text
-  user
-  {
     id
-    username    
-  }
-}`;
+    text
+    user {
+        ${USER_FRAGMENT}
+    }
+`;
 
 export const FILE_FRAGMENT = `
-  fragment FileParts on File {
     id
     url
-  }
+`;
+
+export const MESSAGE_FRAGMENT = `
+    id
+    text
+    to {
+        ${USER_FRAGMENT}
+    }
+    from {
+        ${USER_FRAGMENT}
+    }
 `;
 
 export const FULL_POST_FRAGMENT = `
-  fragment PostParts on Post {
-    id
-    location
-    caption
-    files {
-      id
-    url
+    fragment PostParts on Post{
+        id
+        location
+        caption
+        files {
+            ${FILE_FRAGMENT}
+        }
+        comments {
+            ${COMMENT_FRAGMENT}
+        }
+        user {
+            ${USER_FRAGMENT}
+        }
     }
-    comments {
-      id
-  text
-  user
-  {
-    id
-    username    
-  }
-    }
-    user {
-      id
-    username    
-    }
-  }
 `;
 
 export const ROOM_FRAGMENT = `
-  fragment RoomParts on Room {
-    id
-    participants {
-      id
+    fragment RoomParts on Room {
+        id
+        participants {
+            ${USER_FRAGMENT}
+        }
+        messages { 
+            ${MESSAGE_FRAGMENT}
+        }
     }
-  }
 `;
