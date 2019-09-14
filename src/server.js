@@ -10,6 +10,9 @@ import {
 import {
   isAuthenticated,
 } from './middlewares';
+import {
+  USER_FRAGMENT,
+} from './fragments';
 
 const PORT = process.env.PORT || 4000;
 
