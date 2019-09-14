@@ -22,8 +22,12 @@ type Post {
   location: String
   caption: String!
   likes: [Like!]!
+  user: User!
   comments: [Comment!]!
   isLiked: Boolean!
+  likeCount: Int!
+  createdAt: String
+  updatedAt: String
 }
 
 type Like {
