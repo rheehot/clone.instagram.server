@@ -1,6 +1,9 @@
 import {
   prisma,
 } from '../../../../generated/prisma-client';
+import {
+  COMMENT_FRAGMENT,
+} from '../../../fragments';
 
 export default {
   Query: {
@@ -13,7 +16,7 @@ export default {
       });
       const comments = await prisma.post({
         id,
-      }).comments();
+      }).comments().$fragment(COMMENT_FRAGMENT);
       const likeCount = await prisma.likesConnection({
         wherer: {
           post: {
