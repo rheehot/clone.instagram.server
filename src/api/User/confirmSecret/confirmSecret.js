@@ -5,6 +5,7 @@ import {
   generateToken,
 } from '../../../utils';
 
+
 export default {
   Mutation: {
     confirmSecret: async (_, args) => {
@@ -17,6 +18,14 @@ export default {
       });
 
       if (user.loginSecret === secret) {
+        await prisma.updateUser({
+          where: {
+            id: user.id,
+          },
+          data: {
+            loginSecret: '',
+          },
+        });
         return generateToken(user.id);
       }
       throw Error('Wrong email/secret conbination');
