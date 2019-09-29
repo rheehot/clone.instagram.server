@@ -1,26 +1,12 @@
-import {
-  isAuthenticated,
-} from '../../../middlewares';
-import {
-  prisma,
-} from '../../../../generated/prisma-client';
+import { prisma } from '../../../../generated/prisma-client';
 
 export default {
   Query: {
-    me: async (_, __, {
-      request,
-    }) => {
+    me: async (_, __, { request, isAuthenticated }) => {
       isAuthenticated(request);
-      const user = await prisma.user({
-        id: request.user.id,
-      });
-      const posts = await prisma.user({
-        id: request.user.id,
-      }).posts();
-      return {
-        user,
-        posts,
-      };
+      const { user } = request;
+      // eslint-disable-next-line no-return-await
+      return await prisma.user({ id: user.id });
     },
   },
 };
