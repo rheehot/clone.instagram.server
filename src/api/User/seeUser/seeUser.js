@@ -6,13 +6,13 @@ export default {
   Query: {
     seeUser: async (_, args) => {
       const {
-        id,
+        username,
       } = args;
       const user = await prisma.user({
-        id,
+        username,
       });
       const posts = await prisma.user({
-        id,
+        username,
       }).posts();
       return {
         user,
