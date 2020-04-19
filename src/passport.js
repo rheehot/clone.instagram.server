@@ -29,7 +29,7 @@ const verifyUser = async (payload, done) => {
 // eslint-disable-next-line import/prefer-default-export
 export const authenticateJwt = (req, res, next) => passport.authenticate('jwt', {
   session: false,
-}, (errpr, user) => {
+}, (error, user) => {
   if (user) {
     req.user = user;
   }
